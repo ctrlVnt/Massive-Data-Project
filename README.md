@@ -13,28 +13,42 @@ Link of active server for ptoject [TinyInstagram](https://github.com/momo54/mass
   ```bash
     python seed.py --users 1000 --posts 50 --follows-min 1 --follows-max 20
   ```
+  
+## Results
 
-## Step 1 : Scaling up the load
+Below are the three barplot graphs generated during the benchmarking phase.  
+Each plot shows the average execution time (in seconds) with error bars representing the variance from the three repeated runs.
 
-We need to measure the average execution time of a timeline request (ms) for the following configurations: 1, 10, 20, 50, 100, 1000 simultaneous distinct users
+### 1. Concurrency Experiment — `conc.png`
 
-So we use a simple script to do that :
-```bash
-  python step1.py
-```
+This graph shows the evolution of the average timeline request time depending on the number of **simultaneous users** (1, 10, 20, 50, 100, 1000).  
+The dataset size is fixed to:
+- 1000 users  
+- 50 posts per user  
+- 20 followers per user  
 
-We generate conc.csv
+<p align="center">
+  <img src="imgs/conc.png" width="600">
+</p>
 
-## Step 2 : Scaling up based on data size
 
-Face 50 richest simultaneously:
+### 2. Posts Scaling Experiment — `post.png`
 
-* Set the number of followers to 20 and vary the number of posts: 10 , 100, 1000 posts per user
-  ```bash
-    python step2_post.py
-  ```
+This graph shows how performance changes when varying the **number of posts per user** (10, 100, 1000), while keeping:
+- 50 concurrent requests  
+- 20 followers per user  
 
-* Set the number of posts per user to 100 and vary the number of followers: 10, 50, 100
-  ```bash
-    python step2_fanout.py
-  ```
+<p align="center">
+  <img src="imgs/post.png" width="600">
+</p>
+
+
+### 3. Fanout Scaling Experiment — `fanout.png`
+
+This graph shows how performance evolves when varying the **number of followers (fanout)** per user (10, 50, 100), while fixing:
+- 50 concurrent requests  
+- 100 posts per user  
+
+<p align="center">
+  <img src="imgs/fanout.png" width="600">
+</p>
