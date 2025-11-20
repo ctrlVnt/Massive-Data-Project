@@ -52,3 +52,5 @@ This graph shows how performance evolves when varying the **number of followers 
 <p align="center">
   <img src="imgs/fanout.png" width="600">
 </p>
+
+**nb :** *I had 20 users for value = 10 and 100 users for value = 50 and 100. So if we had 100 post for user we can see the differences !*
