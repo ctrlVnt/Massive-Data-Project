@@ -42,6 +42,7 @@ This graph shows how performance changes when varying the **number of posts per 
   <img src="imgs/post.png" width="600">
 </p>
 
+**nb :** *Dans l'expérience avec 1000 posts / user, la différence est due à un pic de connexion pour l'une des 3 requêtes.*
 
 ### 3. Fanout Scaling Experiment — `fanout.png`
 
